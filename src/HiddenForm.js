@@ -19,14 +19,12 @@ function HiddenForm(props) {
       <h4>WIP</h4>
 
       <h3>Social Media</h3>
-      <h2>Social Links</h2>
       <div id="post_social_links">
         {socialMedia.github && <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}></FaGithub></a>}
-        <a style={{padding: '0.4rem'}} href={socialMedia.discord} target="_blank"><FaDiscord size={30}></FaDiscord></a>
-        <a style={{padding: '0.4rem'}} href={socialMedia.instagram} target="_blank"><FaInstagram size={30}></FaInstagram></a>
-        <a style={{padding: '0.4rem'}} href={socialMedia.slack} target="_blank"><FaSlackHash size={30}></FaSlackHash></a><br/>
+        {socialMedia.discord && <a style={{padding: '0.4rem'}} href={socialMedia.discord} target="_blank"><FaDiscord size={30}></FaDiscord></a>}
+        {socialMedia.instagram && <a style={{padding: '0.4rem'}} href={socialMedia.instagram} target="_blank"><FaInstagram size={30}></FaInstagram></a>}
+        {socialMedia.slack && <a style={{padding: '0.4rem'}} href={socialMedia.slack} target="_blank"><FaSlackHash size={30}></FaSlackHash></a>}
       </div>
-
     </div>
   )
 }
