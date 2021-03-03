@@ -4,35 +4,85 @@ import HiddenForm from './HiddenForm';
 const outerSectionStyle =  {
   width: '30%',
   display: 'grid',
-  gridTemplateColumns: '40% auto',
-  padding: '20px 16px',
-  margin: '20px auto'
+  gridTemplateColumns: '1fr 1fr',
+  margin: '50px auto',
+  columnGap: '30px'
+}
 
+const hiddenForm = {
+  gridColumn: 2 
 }
 
 function Form(props) {
   const [visibility, setVisibility] = useState(false);
+  const [username, setUsername] = useState("");
+  const [role, setRole] = useState({
+    "mentor": false,
+    "mentee": false
+  })
+  const [languages, setLanguages] = useState({
+    "javascript": false,
+    "java": false,
+    "ruby": false,
+    "python": false
+  })
+
+  const [socialMedia, setSocialMedia] = useState({
+    "github": "",
+    "discord": "",
+    "instagram": "",
+    "slack": ""
+  })
+
+  let state = {
+    "username": {username},
+    "role": {role},
+    "languages": {languages},
+    "socialMedia": {socialMedia}
+  }
 
   function handleSubmit(e){
     e.preventDefault();
-    setVisibility(true)
+    setVisibility(true);
   }
+
+  function handleNameChange(e) {
+    setUsername(e.target.value)
+  }
+
+  // function handleInfoChange(e) {
+  //   setUserInfo({...userInfo, [e.target.name]: e.target.value})
+  // }
+
+  function handleRoleChange(e) {
+    setRole({...role, [e.target.id]: (e.target.checked)})
+  }
+  // This should be applied to each one of our languages
+  function handleLanguageChange(e){
+    setLanguages({...languages, [e.target.id]: (e.target.checked)})
+  }
+
+  // Should handle the state for each one of our social links.
+  function handleSocialLinks(e) {
+    setSocialMedia({...socialMedia, [e.target.id]: e.target.value})
+  }
+
   return (
     <>
       <section style={outerSectionStyle}>     
-        <section id="formSection" className="grid-item">
+        <section id="formSection">
           <form
             name="form"
             id="signupform"
             onSubmit={handleSubmit}
-            // method="get"
           >
             <div id="username">
               <label htmlFor="username">User Name</label><br/>
               <input
+                onChange={handleNameChange}
                 type="text"
                 name="username"
-                id="username"
+                value={username}
                 placeholder="Username"
               /><br />
             </div>
@@ -40,10 +90,10 @@ function Form(props) {
             <div id="role">
               <label htmlFor="role">Role</label><br/>
 
-              <input type="radio" name="role" id="mentor" value="mentor" />
+              <input onChange={handleRoleChange} type="checkbox" id="mentor"/>
               <label htmlFor="mentor">Mentor</label>
 
-              <input type="radio" name="role" id="mentee" value="mentee" />
+              <input onChange={handleRoleChange} type="checkbox" id="mentee" />
               <label htmlFor="mentor">Mentee</label><br />
             </div>
 
@@ -51,26 +101,42 @@ function Form(props) {
               <label htmlFor="languages">Languages</label><br />
 
               <input
+                onChange={handleLanguageChange}
                 type="checkbox"
-                value="javascript"
-                name="languages"
+                value={languages.javascript}
                 id="javascript"
               />
               <label htmlFor="javascript">Javascript</label><br />
 
-              <input type="checkbox" value="java" name="languages" id="java" />
+              <input 
+                onChange={handleLanguageChange}
+                type="checkbox" 
+                value={languages.java} 
+                id="java" 
+                />
               <label htmlFor="java">Java</label><br />
 
-              <input type="checkbox" value="ruby" name="languages" id="ruby" />
+              <input 
+                onChange={handleLanguageChange}
+                type="checkbox" 
+                value={languages.ruby} 
+                id="ruby" />
               <label htmlFor="ruby">Ruby</label><br />
 
-              <input type="checkbox" value="python" name="languages" id="python" />
+              <input 
+                onChange={handleLanguageChange}
+                type="checkbox" 
+                value={languages.python} 
+                name="languages" 
+                id="python" 
+              />
               <label htmlFor="python">Python</label><br />
             </div>
 
             <div id="social_links">
               <input type="button" value="Github" /><br />
               <input
+                onChange={handleSocialLinks}
                 type="text"
                 name="social_links"
                 id="github"
@@ -79,6 +145,7 @@ function Form(props) {
 
               <input type="button" value="Discord" /><br />
               <input
+                onChange={handleSocialLinks}
                 type="text"
                 name="social_links"
                 id="discord"
@@ -87,6 +154,7 @@ function Form(props) {
 
               <input type="button" value="Instagram" /><br />
               <input
+                onChange={handleSocialLinks}
                 type="text"
                 name="social_links"
                 id="instagram"
@@ -95,6 +163,7 @@ function Form(props) {
 
               <input type="button" value="Slack" /><br />
               <input
+                onChange={handleSocialLinks}
                 type="text"
                 name="social_links"
                 id="slack"
@@ -102,11 +171,10 @@ function Form(props) {
               /><br />
             </div>
 
-            <button type="submit">Submit</button>
+            <button className="btn-danger" type="submit">Submit</button>
           </form>
         </section>
-
-        <HiddenForm display={visibility} />
+        {visibility && <HiddenForm state={state} style={hiddenForm}/>}
       </section>
     </>
   )
