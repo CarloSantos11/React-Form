@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HiddenForm from './HiddenForm';
+import HiddenForm from '../HiddenForm/HiddenForm';
 
 const outerSectionStyle =  {
   width: '30%',
@@ -34,11 +34,11 @@ function Form(props) {
     "slack": ""
   })
 
-  let state = {
-    "username": {username},
-    "role": {role},
-    "languages": {languages},
-    "socialMedia": {socialMedia}
+  let userInfo = {
+    "username": username,
+    "role": role,
+    "languages": languages,
+    "socialMedia": socialMedia
   }
 
   function handleSubmit(e){
@@ -62,7 +62,7 @@ function Form(props) {
     setLanguages({...languages, [e.target.id]: (e.target.checked)})
   }
 
-  // Should handle the state for each one of our social links.
+  // Should handle the userInfo for each one of our social links.
   function handleSocialLinks(e) {
     setSocialMedia({...socialMedia, [e.target.id]: e.target.value})
   }
@@ -174,7 +174,7 @@ function Form(props) {
             <button className="btn-danger" type="submit">Submit</button>
           </form>
         </section>
-        {visibility && <HiddenForm state={state} style={hiddenForm}/>}
+        {visibility && <HiddenForm userInfo={userInfo} style={hiddenForm}/>}
       </section>
     </>
   )
