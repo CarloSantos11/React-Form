@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import HiddenForm from '../HiddenForm/HiddenForm';
+import styled, { css } from 'styled-components'
 
-const outerSectionStyle =  {
-  width: '30%',
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  margin: '50px auto',
-  columnGap: '30px'
-}
+const OuterSection = styled.section`
+  width: 30%;
+  display: grid;
+  gridTemplateColumns: 1fr 1fr;
+  margin: 50px auto;
+  columnGap: 30px;
+`
 
 const hiddenForm = {
   gridColumn: 2 
@@ -69,7 +70,7 @@ function Form(props) {
 
   return (
     <>
-      <section style={outerSectionStyle}>     
+      <OuterSection>     
         <section id="formSection">
           <form
             name="form"
@@ -175,7 +176,7 @@ function Form(props) {
           </form>
         </section>
         {visibility && <HiddenForm userInfo={userInfo} style={hiddenForm}/>}
-      </section>
+      </OuterSection>
     </>
   )
 }

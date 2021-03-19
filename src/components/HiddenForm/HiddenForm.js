@@ -20,6 +20,7 @@ function HiddenForm(props) {
       {props.userInfo.languages.java && <h4>Java</h4>}
       {props.userInfo.languages.ruby  && <h4>Ruby</h4>}
       {props.userInfo.languages.python && <h4>Python</h4>}
+      {console.log(props.userInfo.languages)}
 
   
 
