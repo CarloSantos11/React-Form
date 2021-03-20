@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import HiddenForm from '../HiddenForm/HiddenForm';
 import styled, { css } from 'styled-components'
 
@@ -8,8 +8,14 @@ const OuterSection = styled.section`
   gridTemplateColumns: 1fr 1fr;
   margin: 50px auto;
   columnGap: 30px;
-`
+  color: ${props => props.user || "palevioletred"};
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
+  padding: 40px;
+  `;
 
+// How can i do this with styled components?
 const hiddenForm = {
   gridColumn: 2 
 }
@@ -21,25 +27,49 @@ function Form(props) {
     "mentor": false,
     "mentee": false
   })
-  const [languages, setLanguages] = useState({
-    "javascript": false,
-    "java": false,
-    "ruby": false,
-    "python": false
-  })
+  const [languages, setLanguages] = useState([
+    { 
+      name: "javascript", 
+      value: false
+    },
+    {
+      name: "java", 
+      value: false
+    },
+    {
+      name: "ruby", 
+      value: false
+    },
+    {
+      name: "python", 
+      value: false
+    }
+  ])
 
-  const [socialMedia, setSocialMedia] = useState({
-    "github": "",
-    "discord": "",
-    "instagram": "",
-    "slack": ""
-  })
+  const [socialMedia, setSocialMedia] = useState([
+    { 
+      name: "github", 
+      value: ""
+    },
+    {
+      name: "discord", 
+      value: ""
+    },
+    {
+      name: "instagram", 
+      value: ""
+    },
+    {
+      name: "slack", 
+      value: ""
+    }
+  ])
 
   let userInfo = {
-    "username": username,
-    "role": role,
-    "languages": languages,
-    "socialMedia": socialMedia
+    username: username,
+    role: role,
+    languages: languages,
+    socialMedia: socialMedia
   }
 
   function handleSubmit(e){
@@ -51,26 +81,35 @@ function Form(props) {
     setUsername(e.target.value)
   }
 
-  // function handleInfoChange(e) {
-  //   setUserInfo({...userInfo, [e.target.name]: e.target.value})
-  // }
-
   function handleRoleChange(e) {
     setRole({...role, [e.target.id]: (e.target.checked)})
   }
+
   // This should be applied to each one of our languages
-  function handleLanguageChange(e){
-    setLanguages({...languages, [e.target.id]: (e.target.checked)})
+  function handleLanguageChange(event){
+    const _languages = languages.map(language => {
+        if(language.name == event.target.id) {
+          return {name: language.name, value: true} 
+        } return language;      
+      }) 
+    setLanguages(_languages)
   }
 
   // Should handle the userInfo for each one of our social links.
-  function handleSocialLinks(e) {
-    setSocialMedia({...socialMedia, [e.target.id]: e.target.value})
+  function handleSocialLinks(event) {
+    const _socialMedia = socialMedia.map(social => {
+      if(social.name == event.target.id) {
+        return {name: social.name, value: true}
+      } return social;
+    })
+
+    setSocialMedia(_socialMedia)
+    // setSocialMedia({...socialMedia, [e.target.id]: e.target.value})
   }
 
   return (
     <>
-      <OuterSection>     
+      <OuterSection user>     
         <section id="formSection">
           <form
             name="form"
@@ -101,40 +140,21 @@ function Form(props) {
             <div id="languages">
               <label htmlFor="languages">Languages</label><br />
 
-              <input
-                onChange={handleLanguageChange}
-                type="checkbox"
-                value={languages.javascript}
-                id="javascript"
-              />
-              <label htmlFor="javascript">Javascript</label><br />
-
-              <input 
-                onChange={handleLanguageChange}
-                type="checkbox" 
-                value={languages.java} 
-                id="java" 
-                />
-              <label htmlFor="java">Java</label><br />
-
-              <input 
-                onChange={handleLanguageChange}
-                type="checkbox" 
-                value={languages.ruby} 
-                id="ruby" />
-              <label htmlFor="ruby">Ruby</label><br />
-
-              <input 
-                onChange={handleLanguageChange}
-                type="checkbox" 
-                value={languages.python} 
-                name="languages" 
-                id="python" 
-              />
-              <label htmlFor="python">Python</label><br />
+              {languages.map((language) => (
+                <>
+                  <input
+                    onChange={handleLanguageChange}
+                    type="checkbox"
+                    value={language.value}
+                    id={language.name}
+                  />
+                  <label htmlFor={language.name}>{language.name}</label><br />
+                </>
+              ))}
             </div>
 
             <div id="social_links">
+              <label htmlFor="Social Media">Social Media</label><br />
               <input type="button" value="Github" /><br />
               <input
                 onChange={handleSocialLinks}

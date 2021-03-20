@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
+import styled, { css } from 'styled-components'
+
+const LanguageName = styled.p`
+  text-transform: capitalize;
+  `
 
 function HiddenForm(props) {
   const socialMedia = props.userInfo.socialMedia;
@@ -16,20 +20,22 @@ function HiddenForm(props) {
       { props.userInfo.role.mentee ? <p>Yes</p> : <p>No</p> }
 
       <h2>Languages</h2>
-      {props.userInfo.languages.javascript && <h4>Javascript</h4>}
-      {props.userInfo.languages.java && <h4>Java</h4>}
-      {props.userInfo.languages.ruby  && <h4>Ruby</h4>}
-      {props.userInfo.languages.python && <h4>Python</h4>}
-      {console.log(props.userInfo.languages)}
-
-  
+      {props.userInfo.languages.map((language) => (
+        <>
+          {language.value && <LanguageName>{language.name}</LanguageName>}
+        </>
+      ))}
 
       <h3>Social Media</h3>
       <div id="post_social_links">
-        {socialMedia.github && <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}/></a>}
-        {socialMedia.discord && <a style={{padding: '0.4rem'}} href={socialMedia.discord} target="_blank"><FaDiscord size={30}/></a>}
-        {socialMedia.instagram && <a style={{padding: '0.4rem'}} href={socialMedia.instagram} target="_blank"><FaInstagram size={30}/></a>}
-        {socialMedia.slack && <a style={{padding: '0.4rem'}} href={socialMedia.slack} target="_blank"><FaSlackHash size={30}/></a>}
+        {socialMedia.map((social)=>(
+          <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}/></a>
+        ))}
+
+        <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}/></a>
+        <a style={{padding: '0.4rem'}} href={socialMedia.discord} target="_blank"><FaDiscord size={30}/></a>
+        <a style={{padding: '0.4rem'}} href={socialMedia.instagram} target="_blank"><FaInstagram size={30}/></a>
+        <a style={{padding: '0.4rem'}} href={socialMedia.slack} target="_blank"><FaSlackHash size={30}/></a>
       </div>
     </div>
   )
