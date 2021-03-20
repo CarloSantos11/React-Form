@@ -19,7 +19,7 @@ function HiddenForm(props) {
       <h4>Mentee</h4>
       { props.userInfo.role.mentee ? <p>Yes</p> : <p>No</p> }
 
-      <!-- This would be the code I am modeling -->
+      {/* This would be the code I am modeling  */}
       <h2>Languages</h2>
       {props.userInfo.languages.map((language) => (
         <>
@@ -27,14 +27,15 @@ function HiddenForm(props) {
         </>
       ))}
 
-      <!-- WIP: DRY THIS SECTION -->
-      <!-- I would like to find a way for the react-icon to be dynamic. 
-           I will try interpolating the react-icon to be be a variable if that is possible -->
-
+      {/* WIP: DRY THIS SECTION
+      I would like to find a way for the react-icon to be dynamic. 
+           I will try interpolating the react-icon to be be a variable if that is possible  */}
       <h3>Social Media</h3>
       <div id="post_social_links">
-        {socialMedia.map((social)=>(
-          <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}/></a>
+        {socialMedia.map((social)=>(  
+          <>                                       {/*REFACTOR*/}                      {/*REFACTOR*/}
+            <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}/></a>
+          </>
         ))}
 
         <a style={{padding: '0.4rem'}} href={socialMedia.github} target="_blank"><FaGithub size={30}/></a>
