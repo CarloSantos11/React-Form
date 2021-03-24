@@ -1,32 +1,38 @@
 import React, { useState } from 'react';
-import HiddenForm from '../HiddenForm/HiddenForm';
+import Card from '../Card/Card';
+import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled, { css } from 'styled-components'
+import IndexView from '../IndexView/IndexView'
 
 const OuterSection = styled.section`
-  width: 30%;
-  display: grid;
-  gridTemplateColumns: 1fr 1fr;
+  width: 300px;
+  display: block;
+  grid-template-columns: 1fr 1fr;
   margin: 50px auto;
-  columnGap: 30px;
-  color: ${props => props.user || "palevioletred"};
+  column-gap: 30px;
+  color: ${props => props.color || "black"};
   background: papayawhip;
   border: none;
   border-radius: 3px;
   padding: 40px;
-  `;
-
-// How can i do this with styled components?
-const hiddenForm = {
-  gridColumn: 2 
-}
+  -webkit-box-shadow: 8px 7px 11px 6px rgba(163,163,163,0.7);
+  box-shadow: 8px 7px 11px 6px rgba(163,163,163,0.7);
+  `
 
 function Form(props) {
   const [visibility, setVisibility] = useState(false);
   const [username, setUsername] = useState("");
-  const [role, setRole] = useState({
-    "mentor": false,
-    "mentee": false
-  })
+  const [role, setRole] = useState([
+    {
+      name: "mentor",
+      value: false
+    },
+    {
+      name: "mentee",
+      value: false
+    }
+  ])
+
   const [languages, setLanguages] = useState([
     { 
       name: "javascript", 
@@ -48,19 +54,23 @@ function Form(props) {
 
   const [socialMedia, setSocialMedia] = useState([
     { 
-      name: "github", 
+      name: "github",
+      icon: <FaGithub size={30}/>,
       value: ""
     },
     {
-      name: "discord", 
+      name: "discord",
+      icon: <FaDiscord size={30} />,
       value: ""
     },
     {
       name: "instagram", 
+      icon: <FaInstagram size={30} />,
       value: ""
     },
     {
       name: "slack", 
+      icon: <FaSlackHash size={30} />,
       value: ""
     }
   ])
@@ -81,8 +91,13 @@ function Form(props) {
     setUsername(e.target.value)
   }
 
-  function handleRoleChange(e) {
-    setRole({...role, [e.target.id]: (e.target.checked)})
+  function handleRoleChange(event) {
+    const _role = role.map(role => {
+      if(role.name == event.target.id) {
+        return { name: role.name, value: true}
+      } return role;
+    })
+    setRole(_role)
   }
 
   // This should be applied to each one of our languages
@@ -99,7 +114,7 @@ function Form(props) {
   function handleSocialLinks(event) {
     const _socialMedia = socialMedia.map(social => {
       if(social.name == event.target.id) {
-        return {name: social.name, value: true}
+        return {name: social.name, icon: social.icon, value: event.target.value}
       } return social;
     })
 
@@ -109,7 +124,7 @@ function Form(props) {
 
   return (
     <>
-      <OuterSection user>     
+      <OuterSection>     
         <section id="formSection">
           <form
             name="form"
@@ -140,7 +155,7 @@ function Form(props) {
             <div id="languages">
               <label htmlFor="languages">Languages</label><br />
 
-              {languages.map((language) => (
+              {languages.map(language => (
                 <>
                   <input
                     onChange={handleLanguageChange}
@@ -155,48 +170,25 @@ function Form(props) {
 
             <div id="social_links">
               <label htmlFor="Social Media">Social Media</label><br />
-              <input type="button" value="Github" /><br />
-              <input
-                onChange={handleSocialLinks}
-                type="text"
-                name="social_links"
-                id="github"
-                placeholder="Profile URL"
-              /><br />
-
-              <input type="button" value="Discord" /><br />
-              <input
-                onChange={handleSocialLinks}
-                type="text"
-                name="social_links"
-                id="discord"
-                placeholder="Profile URL"
-              /><br />
-
-              <input type="button" value="Instagram" /><br />
-              <input
-                onChange={handleSocialLinks}
-                type="text"
-                name="social_links"
-                id="instagram"
-                placeholder="Profile URL"
-              /><br />
-
-              <input type="button" value="Slack" /><br />
-              <input
-                onChange={handleSocialLinks}
-                type="text"
-                name="social_links"
-                id="slack"
-                placeholder="Profile URL"
-              /><br />
+              {socialMedia.map(social => (
+                <>
+                  <input
+                    onChange={handleSocialLinks}
+                    type="text"
+                    name="social_links"
+                    id= {social.name}
+                    placeholder={social.name.replace(/^\w/, (firstLetter) => firstLetter.toUpperCase()) + " Profile URL"}
+                  /><br />
+                </>
+              ))}
             </div>
 
             <button className="btn-danger" type="submit">Submit</button>
           </form>
         </section>
-        {visibility && <HiddenForm userInfo={userInfo} style={hiddenForm}/>}
       </OuterSection>
+        {visibility && <Card userInfo={userInfo} />}
+
     </>
   )
 }
