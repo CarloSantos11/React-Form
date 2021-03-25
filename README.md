@@ -1,3 +1,16 @@
+# SoloPlus
+
+Where I left off was implementing react router.
+
+## To Do
+Finish working with react router.
+Mock the functionality to login. 
+Only present the page if logged in.
+
+What I know how to do. Refactoring the Users.js 
+to actually be a json file
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
