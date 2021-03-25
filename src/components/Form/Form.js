@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import styled, { css } from 'styled-components'
-import IndexView from '../IndexView/IndexView'
+import styled from 'styled-components'
+
 
 const OuterSection = styled.section`
   width: 300px;

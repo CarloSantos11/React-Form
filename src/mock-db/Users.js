@@ -40,22 +40,18 @@ const Users =
         {
           "name": "github",
           "value": "https://github.com/CarloSantos11",
-          "icon": < FaGithub size = { 30} />
         },
         {
           "name": "discord",
           "value": "https://discord.gg/hsCvcGwA",
-          "icon": < FaDiscord size={30} />
         },
         {
           "name": "instagram",
           "value": "",
-          "icon": < FaInstagram size={30} />
         },
         {
           "name": "slack",
           "value": "",
-          "icon": < FaSlackHash size={30} />
         }
       ]
     },
@@ -97,22 +93,18 @@ const Users =
         {
           "name": "github",
           "value": "",
-          "icon": < FaGithub size={30} />
         },
         {
           "name": "discord",
           "value": "",
-          "icon": < FaDiscord size={30} />
         },
         {
           "name": "instagram",
           "value": "",
-          "icon": < FaInstagram size={30} />
         },
         {
           "name": "slack",
           "value": "https://code-for-humans.slack.com/archives/D01KL7UMKMZ",
-          "icon": < FaSlackHash size={30} />
         }
       ]
     }

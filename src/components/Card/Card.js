@@ -1,6 +1,13 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled, { css } from 'styled-components'
 
+let socilaIcons = {
+  github: <FaGithub size={30}/>,
+  discord: <FaDiscord size={30}/>,
+  instagram: <FaInstagram size={30}/>,
+  slack: <FaSlackHash size={30}/>,
+}
+
 const LanguageName = styled.p`
   text-transform: capitalize;
   `
@@ -49,7 +56,7 @@ function Card(props) {
           <h3>Social Media</h3>
           <div id="post_social_links">
             {socialMedia.map((social) => (
-              social.value && <a style={{ padding: '0.2rem' }} href={social.value} target="_blank">{social.icon}</a>
+              social.value && <a style={{ padding: '0.2rem' }} href={social.value} target="_blank">{socilaIcons[social.name]}</a>
             ))}
           </div>
         </Column>
