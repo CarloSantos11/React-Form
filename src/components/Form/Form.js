@@ -182,6 +182,7 @@ function Form(props) {
                 </>
               ))}
             </div>
+            <br />
 
             <button className="btn-danger" type="submit">Submit</button>
           </form>
