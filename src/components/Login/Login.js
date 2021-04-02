@@ -10,7 +10,7 @@ const outerSectionStyle = {
   margin: '20px auto'
 }
 
-const Login = (props) => {
+const Login = ({ onChange }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
   const [user, setUser] = useState(null);
@@ -23,8 +23,7 @@ const Login = (props) => {
         setUser(currentUser);
       }
     });
-    props.onChange(user);
-
+    onChange(user);
   }
 
   function handleNameChange(e) {
@@ -65,7 +64,7 @@ const Login = (props) => {
           /><br />
         </div>
         <br />
-        <button className="btn btn-danger" type="submit" style={{marginRight: '10px'}}>Submit</button>
+        <button className="btn btn-danger" type="submit" style={{ marginRight: '10px' }}>Submit</button>
         <button className="btn btn-danger" type="submit"><a href="/signup">Signup</a></button>
       </form>
     </div>

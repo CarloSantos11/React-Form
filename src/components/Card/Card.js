@@ -2,10 +2,10 @@ import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled, { css } from 'styled-components'
 
 let socilaIcons = {
-  github: <FaGithub size={30}/>,
-  discord: <FaDiscord size={30}/>,
-  instagram: <FaInstagram size={30}/>,
-  slack: <FaSlackHash size={30}/>,
+  github: <FaGithub size={30} />,
+  discord: <FaDiscord size={30} />,
+  instagram: <FaInstagram size={30} />,
+  slack: <FaSlackHash size={30} />,
 }
 
 const LanguageName = styled.p`
@@ -33,23 +33,23 @@ const Column = styled.section`
 //   display: inline-block;
 // `
 
-function Card(props) {
-  const socialMedia = props.userInfo.socialMedia;
+function Card({ userInfo }) {
+  const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
-      <h1>{props.userInfo.username}</h1>
+      <h1>{userInfo.username}</h1>
       <Container>
         <Column>
           <h2>Role</h2>
-          {props.userInfo.role.map((currentRole) => (
+          {userInfo.role.map((currentRole) => (
             currentRole.value && <h4>{currentRole.name}</h4>
           ))}
-          
+
         </Column>
         <Column>
           <h2>Languages</h2>
-          {props.userInfo.socialMedia.map((social) => console.log(social)) }
-          {props.userInfo.languages.map((language) => (
+          {userInfo.socialMedia.map((social) => console.log(social))}
+          {userInfo.languages.map((language) => (
             language.value && <LanguageName>{language.name}</LanguageName>
           ))}
 
