@@ -4,6 +4,7 @@
     "username": "Carlo",
     "password": "stuff",
     "active": false,
+    "offline": true,
     "role": [
       {
         "name": "mentor",
@@ -15,23 +16,22 @@
       }
     ],
     "languages": [
-      { 
-        "name": "javascript", 
+      {
+        "name": "javascript",
         "value": true
       },
       {
-        "name": "java", 
+        "name": "java",
         "value": false
       },
       {
-        "name": "ruby", 
+        "name": "ruby",
         "value": true
       },
       {
-        "name": "python", 
+        "name": "python",
         "value": false
       }
-
     ],
     "socialMedia": [
       {
@@ -84,7 +84,6 @@
         "name": "python",
         "value": true
       }
-
     ],
     "socialMedia": [
       {
@@ -106,4 +105,3 @@
     ]
   }
 ]
-
