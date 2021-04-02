@@ -17,9 +17,9 @@ const Login = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    users.forEach((currentUser)=>{
+    users.forEach((currentUser) => {
       if (currentUser?.username === usernameField &&
-          currentUser?.password === passwordField) {
+        currentUser?.password === passwordField) {
         setUser(currentUser);
       }
     });
@@ -65,7 +65,8 @@ const Login = (props) => {
           /><br />
         </div>
         <br />
-        <button className="btn btn-danger" type="submit">Submit</button>
+        <button className="btn btn-danger" type="submit" style={{marginRight: '10px'}}>Submit</button>
+        <button className="btn btn-danger" type="submit"><a href="/signup">Signup</a></button>
       </form>
     </div>
   );
