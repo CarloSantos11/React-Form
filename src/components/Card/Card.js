@@ -1,5 +1,6 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled, { css } from "styled-components";
+import OnlineStatus from "../OnlineStatus/OnlineStatus";
 //import { useState } from "react";
 
 let socilaIcons = {
@@ -21,6 +22,7 @@ const CardView = styled.section`
   margin-bottom: 10rem;
   -webkit-box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
   box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
+  position: relative;
 `;
 const Container = styled.section`
   display: flex;
@@ -31,39 +33,15 @@ const Column = styled.section`
   padding: 2rem 5rem 0 0;
 `;
 
-// let noneActiveUserStyle = styled.section`
-//   color: #c0b5b5;
-// `;
-
-// const ColumnTwo = styled.section`
-//   display: inline-block;
-// `
-
-/**
- * Refactored userInfo
- * Added conditional rendering to set active user to true
- * Card component now displays online and offline status
- * ? Need to figure out how to pass state for login to card view form.
- * ? Login converts active from false to true but when user is rendered to "/index"
- * ? active is converted back to a false value.
- */
-
 function Card({ userInfo }) {
   const socialMedia = userInfo.socialMedia;
-  const activeUser = !userInfo.active;
+  const activeUser = userInfo.active;
   console.log(activeUser);
 
   return (
     <CardView>
       <h1>{userInfo.username}</h1>
-      {activeUser ? (
-        <h5 style={{ color: "green" }}>online</h5>
-      ) : (
-        !activeUser && <h5 style={{ color: "gray" }}>offline</h5>
-      )}
-
-      {/* {activeUser && <h5 style={{ color: "green" }}>online</h5>}
-      {!activeUser && <h5 style={{ display: "none" }}>online</h5>} */}
+      <OnlineStatus activeStatus={activeUser} />
       <Container>
         <Column>
           <h2>Role</h2>

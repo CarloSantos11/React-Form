@@ -4,7 +4,6 @@
     "username": "Carlo",
     "password": "stuff",
     "active": false,
-    "offline": true,
     "role": [
       {
         "name": "mentor",
@@ -56,7 +55,7 @@
     "userId": "jhsdbf874wfjenbsk",
     "username": "Ilya",
     "password": "stuff",
-    "active": false,
+    "active": true,
     "role": [
       {
         "name": "mentor",

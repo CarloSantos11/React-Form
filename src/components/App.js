@@ -29,7 +29,7 @@ function App() {
 
       <Switch>
         <Route path="/" exact> 
-          { user ? <Redirect to="/index" />: <Login onChange={(eventOne)=> setUser(eventOne)} /> } { /*protected route*/ }
+          { user ? <Redirect to="/index" />: <Login onChange={(user)=> setUser(user)} /> } { /*protected route*/ }
         </Route>
         <Route path="/signup">
           <Form/>
