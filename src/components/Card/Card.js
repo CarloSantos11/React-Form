@@ -1,5 +1,5 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import OnlineStatus from "../OnlineStatus/OnlineStatus";
 
 let socilaIcons = {
@@ -65,6 +65,7 @@ function Card({ userInfo }) {
                     style={{ padding: "0.2rem" }}
                     href={social.value}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     {socilaIcons[social.name]}
                   </a>

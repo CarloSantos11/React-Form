@@ -93,7 +93,7 @@ function Form(props) {
 
   function handleRoleChange(event) {
     const _role = role.map(role => {
-      if(role.name == event.target.id) {
+      if(role.name === event.target.id) {
         return { name: role.name, value: true}
       } return role;
     })
@@ -103,7 +103,7 @@ function Form(props) {
   // This should be applied to each one of our languages
   function handleLanguageChange(event){
     const _languages = languages.map(language => {
-        if(language.name == event.target.id) {
+        if(language.name === event.target.id) {
           return {name: language.name, value: true} 
         } return language;      
       }) 
@@ -113,7 +113,7 @@ function Form(props) {
   // Should handle the userInfo for each one of our social links.
   function handleSocialLinks(event) {
     const _socialMedia = socialMedia.map(social => {
-      if(social.name == event.target.id) {
+      if(social.name === event.target.id) {
         return {name: social.name, icon: social.icon, value: event.target.value}
       } return social;
     })

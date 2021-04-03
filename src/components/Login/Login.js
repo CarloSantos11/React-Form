@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import users from "../../mock-db/users.json";
+import {Link} from 'react-router-dom';
 
 const outerSectionStyle = {
   textAlign: "center",
@@ -8,10 +9,9 @@ const outerSectionStyle = {
   margin: "20px auto",
 };
 
-const Login = ({ onChange }) => {
+const Login = ({ setUserState }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
-  const [activeUser, setActiveUser] = useState(false);
   const [user, setUser] = useState(null);
 
   function handleSubmit(event) {
@@ -23,13 +23,9 @@ const Login = ({ onChange }) => {
       ) {
         setUser(currentUser);
       }
-      //! works but creates duplicate logs? WHY
-      if (currentUser?.active === false) {
-        setActiveUser((currentUser = true));
-        console.log(currentUser);
-      }
+     
     });
-    onChange(user);
+    setUserState(user);
   }
 
   function handleNameChange(e) {
@@ -78,9 +74,11 @@ const Login = ({ onChange }) => {
         >
           Submit
         </button>
-        <button className="btn btn-danger" type="submit">
-          <a href="/signup">Signup</a>
-        </button>
+        <Link to="/signup">
+          <button className="btn btn-danger" type="submit">
+            Signup
+          </button>
+        </Link>
       </form>
     </div>
   );

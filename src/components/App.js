@@ -4,7 +4,7 @@ import Form from './Form/Form'
 import IndexView from './IndexView/IndexView'
 import Login from './Login/Login'
 import '../App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Nav from './Nav/Nav'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
 
       <Switch>
         <Route path="/" exact> 
-          { user ? <Redirect to="/index" />: <Login onChange={(user)=> setUser(user)} /> } { /*protected route*/ }
+          { user ? <Redirect to="/index" />: <Login setUserState={(user)=> setUser(user)} /> } { /*protected route*/ }
         </Route>
         <Route path="/signup">
           <Form/>
@@ -26,6 +26,8 @@ function App() {
         </Route>
       </Switch>
     </Router>
+
+    
   )
 } 
 
