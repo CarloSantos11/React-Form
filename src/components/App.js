@@ -5,27 +5,14 @@ import IndexView from './IndexView/IndexView'
 import Login from './Login/Login'
 import '../App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom'
+import Nav from './Nav/Nav'
 
 function App() {
   const [user, setUser] = useState(null);
 
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="#">Home</Link>
-            </li>
-            <li>
-              <Link to="/#">About</Link>
-            </li>
-            <li>
-              <Link to="/#">Users</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Nav/>
 
       <Switch>
         <Route path="/" exact> 

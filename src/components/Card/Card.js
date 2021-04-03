@@ -1,5 +1,5 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 let socilaIcons = {
   github: <FaGithub size={30} />,
