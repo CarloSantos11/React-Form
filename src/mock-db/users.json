@@ -15,23 +15,22 @@
       }
     ],
     "languages": [
-      { 
-        "name": "javascript", 
+      {
+        "name": "javascript",
         "value": true
       },
       {
-        "name": "java", 
+        "name": "java",
         "value": false
       },
       {
-        "name": "ruby", 
+        "name": "ruby",
         "value": true
       },
       {
-        "name": "python", 
+        "name": "python",
         "value": false
       }
-
     ],
     "socialMedia": [
       {
@@ -56,7 +55,7 @@
     "userId": "jhsdbf874wfjenbsk",
     "username": "Ilya",
     "password": "stuff",
-    "active": false,
+    "active": true,
     "role": [
       {
         "name": "mentor",
@@ -84,7 +83,6 @@
         "name": "python",
         "value": true
       }
-
     ],
     "socialMedia": [
       {
@@ -106,4 +104,3 @@
     ]
   }
 ]
-
