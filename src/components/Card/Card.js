@@ -1,16 +1,16 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import styled from 'styled-components'
+import styled from "styled-components";
 
-let socilaIcons = {
+let socialIcons = {
   github: <FaGithub size={30} />,
   discord: <FaDiscord size={30} />,
   instagram: <FaInstagram size={30} />,
   slack: <FaSlackHash size={30} />,
-}
+};
 
 const LanguageName = styled.p`
   text-transform: capitalize;
-  `
+`;
 
 const CardView = styled.section`
   width: 500px;
@@ -18,17 +18,17 @@ const CardView = styled.section`
   background-color: #fff;
   padding: 2rem 0rem 3rem 5rem;
   margin-bottom: 10rem;
-  -webkit-box-shadow: 8px 7px 11px 6px rgba(163,163,163,0.7);
-  box-shadow: 8px 7px 11px 6px rgba(163,163,163,0.7);
-`
+  -webkit-box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
+  box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
+`;
 const Container = styled.section`
-    display: flex;
-`
+  display: flex;
+`;
 
 const Column = styled.section`
   display: inline-block;
   padding: 2rem 5rem 0 0;
-`
+`;
 // const ColumnTwo = styled.section`
 //   display: inline-block;
 // `
@@ -41,30 +41,44 @@ function Card({ userInfo }) {
       <Container>
         <Column>
           <h2>Role</h2>
-          {userInfo.role.map((currentRole) => (
-            currentRole.value && <h4>{currentRole.name}</h4>
-          ))}
-
+          {userInfo.role.map(
+            (currentRole, index) =>
+              currentRole.value && <h4 key={index}>{currentRole.name}</h4>
+          )}
         </Column>
         <Column>
           <h2>Languages</h2>
-          {userInfo.languages.map((language, id) => (
-            language.value && <LanguageName>{language.name}</LanguageName>
-          ))}
+          {userInfo.languages.map(
+            (language, index) =>
+              language.value && (
+                <LanguageName key={index}>{language.name}</LanguageName>
+              )
+          )}
 
           <h3>Social Media</h3>
           <div id="post_social_links">
-            {socialMedia.map((social,id) => (
-              social.value && <a key={id} style={{ padding: '0.2rem' }} href={social.value} rel="noreferrer" target="_blank">{socilaIcons[social.name]}</a>
-            ))}
+            {socialMedia.map(
+              (social, index) =>
+                social.value && (
+                  <a
+                    key={index}
+                    style={{ padding: "0.2rem" }}
+                    href={social.value}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {socialIcons[social.name]}
+                  </a>
+                )
+            )}
           </div>
         </Column>
       </Container>
     </CardView>
-  )
+  );
 }
 
-export default Card
+export default Card;
 
 // React router
 // - Login
