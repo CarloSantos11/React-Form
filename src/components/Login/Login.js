@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import users from '../../mock-db/users.json'
-import PropTypes from 'prop-types';
 
 
 const outerSectionStyle = {

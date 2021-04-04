@@ -1,5 +1,5 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 let socilaIcons = {
   github: <FaGithub size={30} />,
@@ -48,15 +48,14 @@ function Card({ userInfo }) {
         </Column>
         <Column>
           <h2>Languages</h2>
-          {userInfo.socialMedia.map((social) => console.log(social))}
-          {userInfo.languages.map((language) => (
+          {userInfo.languages.map((language, id) => (
             language.value && <LanguageName>{language.name}</LanguageName>
           ))}
 
           <h3>Social Media</h3>
           <div id="post_social_links">
-            {socialMedia.map((social) => (
-              social.value && <a style={{ padding: '0.2rem' }} href={social.value} target="_blank">{socilaIcons[social.name]}</a>
+            {socialMedia.map((social,id) => (
+              social.value && <a key={id} style={{ padding: '0.2rem' }} href={social.value} rel="noreferrer" target="_blank">{socilaIcons[social.name]}</a>
             ))}
           </div>
         </Column>

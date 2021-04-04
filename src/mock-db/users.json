@@ -1,6 +1,6 @@
 [
   {
-    "userId": "bif478yfgisjniu",
+    "id": "bif478yfgisjniu",
     "username": "Carlo",
     "password": "stuff",
     "active": false,
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "userId": "jhsdbf874wfjenbsk",
+    "id": "jhsdbf874wfjenbsk",
     "username": "Ilya",
     "password": "stuff",
     "active": false,
