@@ -49,9 +49,9 @@ function App() {
         <Route path="/index">
           <IndexView users={users} />
         </Route>
-        <Router path="/userInfo/:id">
+        <Route path="/userInfo/:id">
           <UserInfo users={users} />
-        </Router>
+        </Route>
       </Switch>
     </Router>
   );
