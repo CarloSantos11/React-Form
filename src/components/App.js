@@ -3,7 +3,6 @@ import "../index.css";
 import Form from "./Form";
 import IndexView from "./IndexView";
 import Login from "./Login";
-import "../App.css";
 import {
   BrowserRouter as Router,
   Switch,
