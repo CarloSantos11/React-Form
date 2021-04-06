@@ -3,6 +3,8 @@ import Form from "./Form";
 import IndexView from "./IndexView";
 import Login from "./Login";
 import users from "../mock-db/users.json";
+import UserInfo from "./UserInfo";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,7 +39,7 @@ function App() {
           {user ? (
             <Redirect to="/index" />
           ) : (
-            <Login setUser={setUser} users={users} /> 
+            <Login setUser={setUser} users={users} />
           )}
           {/*protected route*/}
         </Route>
@@ -47,6 +49,9 @@ function App() {
         <Route path="/index">
           <IndexView users={users} />
         </Route>
+        <Router path="/userInfo/:id">
+          <UserInfo users={users} />
+        </Router>
       </Switch>
     </Router>
   );
