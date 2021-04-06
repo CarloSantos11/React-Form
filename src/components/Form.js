@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "../Card/Card";
+import Card from "./Card";
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled from "styled-components";
 
@@ -162,13 +162,14 @@ function Form() {
               <label htmlFor="languages">Languages</label>
               <br />
 
-              {languages.map((language) => (
+              {languages.map((language, id) => (
                 <>
                   <input
                     onChange={handleLanguageChange}
                     type="checkbox"
                     value={language.value}
                     id={language.name}
+                    key={id}
                   />
                   <label htmlFor={language.name}>{language.name}</label>
                   <br />

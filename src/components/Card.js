@@ -29,6 +29,12 @@ const Column = styled.section`
   display: inline-block;
   padding: 2rem 5rem 0 0;
 `;
+
+const SocialMediaLink = styled.a`
+  padding: 0.2rem;
+`;
+
+
 // const ColumnTwo = styled.section`
 //   display: inline-block;
 // `
@@ -58,9 +64,9 @@ function Card({ userInfo }) {
           <h3>Social Media</h3>
           <div id="post_social_links">
             {socialMedia.map(
-              (social, index) =>
+              (social, index) => 
                 social.value && (
-                  <a
+                  <SocialMediaLink
                     key={index}
                     style={{ padding: "0.2rem" }}
                     href={social.value}
@@ -68,7 +74,7 @@ function Card({ userInfo }) {
                     target="_blank"
                   >
                     {socialIcons[social.name]}
-                  </a>
+                  </SocialMediaLink>
                 )
             )}
           </div>

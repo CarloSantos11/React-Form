@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import users from "../../mock-db/users.json";
+import users from "../mock-db/users.json";
+import styled from "styled-components";
 
-const outerSectionStyle = {
-  textAlign: "center",
-  width: "50%",
-  padding: "20px 16px",
-  margin: "20px auto",
-};
 
-const Login = ({ validUser }) => {
+const OuterSectionStyle = styled.section`
+  text-align: center;
+  width: 50%;
+  padding: 20px 16px;
+  margin: 20px auto;
+`
+
+const Button = styled.button`
+  margin-right: 10px;
+`
+
+const Login = ({ setUser }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
@@ -19,7 +25,7 @@ const Login = ({ validUser }) => {
         currentUser?.username === usernameField &&
         currentUser?.password === passwordField
       ) {
-        validUser(currentUser);
+        setUser(currentUser);
       }
     });
   }
@@ -33,7 +39,7 @@ const Login = ({ validUser }) => {
   }
 
   return (
-    <div style={outerSectionStyle}>
+    <OuterSectionStyle>
       <h1>Login</h1>
       <br />
       <form name="form" id="login" onSubmit={handleSubmit}>
@@ -63,18 +69,17 @@ const Login = ({ validUser }) => {
           <br />
         </div>
         <br />
-        <button
+        <Button
           className="btn btn-danger"
           type="submit"
-          style={{ marginRight: "10px" }}
         >
           Submit
-        </button>
+        </Button>
         <button className="btn btn-danger" type="submit">
           <a href="/signup">Signup</a>
         </button>
       </form>
-    </div>
+    </OuterSectionStyle>
   );
 };
 

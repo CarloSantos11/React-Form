@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../index.css";
-import Form from "./Form/Form";
-import IndexView from "./IndexView/IndexView";
-import Login from "./Login/Login";
+import Form from "./Form";
+import IndexView from "./IndexView";
+import Login from "./Login";
 import "../App.css";
 import {
   BrowserRouter as Router,
@@ -38,8 +38,8 @@ function App() {
           {user ? (
             <Redirect to="/index" />
           ) : (
-            <Login validUser={(userParam) => setUser(userParam)} />
-          )}{" "}
+            <Login setUser={setUser} /> 
+          )}
           {/*protected route*/}
         </Route>
         <Route path="/signup">
