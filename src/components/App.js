@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../index.css";
 import Form from "./Form";
 import IndexView from "./IndexView";
 import Login from "./Login";
+import users from "../mock-db/users.json";
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,7 +37,7 @@ function App() {
           {user ? (
             <Redirect to="/index" />
           ) : (
-            <Login setUser={setUser} /> 
+            <Login setUser={setUser} users={users} /> 
           )}
           {/*protected route*/}
         </Route>
@@ -45,7 +45,7 @@ function App() {
           <Form />
         </Route>
         <Route path="/index">
-          <IndexView />
+          <IndexView users={users} />
         </Route>
       </Switch>
     </Router>

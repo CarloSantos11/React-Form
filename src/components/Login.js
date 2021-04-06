@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import users from "../mock-db/users.json";
 import styled from "styled-components";
 
 
@@ -14,7 +13,7 @@ const Button = styled.button`
   margin-right: 10px;
 `
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, users }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 

@@ -1,8 +1,7 @@
 import React from "react";
 import Card from "./Card";
-import users from "../mock-db/users.json";
 
-function IndexView() {
+function IndexView({users}) {
   return (
     users.map((user) => 
      <Card key={user.id} userInfo={user}/>
