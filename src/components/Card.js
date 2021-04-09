@@ -1,4 +1,6 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 let socialIcons = {
@@ -34,16 +36,32 @@ const SocialMediaLink = styled.a`
   padding: 0.2rem;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
 
 // const ColumnTwo = styled.section`
 //   display: inline-block;
 // `
 
-function Card({ userInfo }) {
+export default function Card({ userInfo }) {
+  const location = useLocation();
   const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
       <h1>{userInfo.username}</h1>
+      {location.pathname !== `/userInfo/${userInfo.id}` && (
+        <StyledLink to={`/userInfo/${userInfo.id}`}>
+          <h6 style={{ color: "gray" }}>view info</h6>
+        </StyledLink>
+      )}
       <Container>
         <Column>
           <h2>Role</h2>
@@ -64,7 +82,7 @@ function Card({ userInfo }) {
           <h3>Social Media</h3>
           <div id="post_social_links">
             {socialMedia.map(
-              (social, index) => 
+              (social, index) =>
                 social.value && (
                   <SocialMediaLink
                     key={index}
@@ -83,8 +101,6 @@ function Card({ userInfo }) {
     </CardView>
   );
 }
-
-export default Card;
 
 // React router
 // - Login
