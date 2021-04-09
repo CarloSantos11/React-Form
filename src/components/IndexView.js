@@ -1,6 +1,5 @@
-import React from "react";
-import Card from "../Card/Card";
-import users from "../../mock-db/users.json";
+import Card from "./Card";
+import users from "../mock-db/users.json";
 
 function IndexView(props) {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import users from "../../mock-db/users.json";
+import users from "../mock-db/users.json";
 import {Link} from 'react-router-dom';
 
 const outerSectionStyle = {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../Card/Card';
+import Card from './Card';
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled from 'styled-components'
 
