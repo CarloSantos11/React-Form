@@ -1,28 +1,12 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-let socialIcons = {
-  github: <FaGithub size={30} />,
-  discord: <FaDiscord size={30} />,
-  instagram: <FaInstagram size={30} />,
-  slack: <FaSlackHash size={30} />,
-};
 
 const LanguageName = styled.p`
   text-transform: capitalize;
 `;
 
-const CardView = styled.section`
-  width: 500px;
-  margin: auto;
-  background-color: #fff;
-  padding: 2rem 0rem 3rem 5rem;
-  margin-bottom: 10rem;
-  -webkit-box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
-  box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
-`;
 const Container = styled.section`
   display: flex;
 `;
@@ -47,9 +31,22 @@ const StyledLink = styled(Link)`
   }
 `;
 
-// const ColumnTwo = styled.section`
-//   display: inline-block;
-// `
+let socialIcons = {
+  github: <FaGithub size={30} />,
+  discord: <FaDiscord size={30} />,
+  instagram: <FaInstagram size={30} />,
+  slack: <FaSlackHash size={30} />,
+};
+
+const CardView = styled.section`
+  width: 500px;
+  margin: auto;
+  background-color: #fff;
+  padding: 2rem 0rem 3rem 5rem;
+  margin-bottom: 10rem;
+  -webkit-box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
+  box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
+`;
 
 export default function Card({ userInfo }) {
   const location = useLocation();
@@ -110,3 +107,7 @@ export default function Card({ userInfo }) {
 
 // Available people - import JSON
 // Page for displaying user
+
+// const ColumnTwo = styled.section`
+//   display: inline-block;
+// `

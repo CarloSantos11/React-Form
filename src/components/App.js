@@ -13,7 +13,7 @@ import {
   Link,
 } from "react-router-dom";
 
-function App() {
+export default function App() {
   const [user, setUser] = useState(null);
 
   return (
@@ -56,5 +56,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

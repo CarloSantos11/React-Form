@@ -18,7 +18,7 @@ const OuterSection = styled.section`
   box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
 `;
 
-function Form() {
+export default function Form() {
   const [visibility, setVisibility] = useState(false);
   const [username, setUsername] = useState("");
   const [role, setRole] = useState([
@@ -81,16 +81,16 @@ function Form() {
     socialMedia: socialMedia,
   };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setVisibility(true);
-  }
+  };
 
-  function handleNameChange(event) {
+  const handleNameChange = (event) => {
     setUsername(event.target.value);
-  }
+  };
 
-  function handleRoleChange(event) {
+  const handleRoleChange = (event) => {
     const _role = role.map((role) => {
       if (role.name === event.target.id) {
         return { name: role.name, value: true };
@@ -98,10 +98,10 @@ function Form() {
       return role;
     });
     setRole(_role);
-  }
+  };
 
-  // This should be applied to each one of our languages
-  function handleLanguageChange(event) {
+  //! comment-1:
+  const handleLanguageChange = (event) => {
     const _languages = languages.map((language) => {
       if (language.name === event.target.id) {
         return { name: language.name, value: true };
@@ -109,10 +109,9 @@ function Form() {
       return language;
     });
     setLanguages(_languages);
-  }
-
-  // Should handle the userInfo for each one of our social links.
-  function handleSocialLinks(event) {
+  };
+  //! comment-2:
+  const handleSocialLinks = (event) => {
     const _socialMedia = socialMedia.map((social) => {
       if (social.name === event.target.id) {
         return {
@@ -124,9 +123,9 @@ function Form() {
       return social;
     });
 
+    //? comment-3:
     setSocialMedia(_socialMedia);
-    // setSocialMedia({...socialMedia, [e.target.id]: e.target.value})
-  }
+  };
 
   return (
     <>
@@ -210,4 +209,15 @@ function Form() {
   );
 }
 
-export default Form;
+/*
+ * NOTES REFERENCE: *
+ */
+
+//! comment-1:
+/*This should be applied to each one of our languages*/
+
+//! comment-2:
+/*Should handle the userInfo for each one of our social links. */
+
+//? comment-3:
+/*setSocialMedia({...socialMedia, [e.target.id]: e.target.value})*/

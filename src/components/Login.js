@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-
 const OuterSectionStyle = styled.section`
   text-align: center;
   width: 50%;
   padding: 20px 16px;
   margin: 20px auto;
-`
+`;
 
 const Button = styled.button`
   margin-right: 10px;
-`
+`;
 
-const Login = ({ setUser, users }) => {
+export default function Login({ setUser, users }) {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     users.forEach((currentUser) => {
       if (
@@ -27,15 +26,15 @@ const Login = ({ setUser, users }) => {
         setUser(currentUser);
       }
     });
-  }
+  };
 
-  function handleNameChange(event) {
+  const handleNameChange = (event) => {
     setUsernameField(event.target.value);
-  }
+  };
 
-  function handlePasswordChange(event) {
+  const handlePasswordChange = (event) => {
     setPasswordField(event.target.value);
-  }
+  };
 
   return (
     <OuterSectionStyle>
@@ -68,10 +67,7 @@ const Login = ({ setUser, users }) => {
           <br />
         </div>
         <br />
-        <Button
-          className="btn btn-danger"
-          type="submit"
-        >
+        <Button className="btn btn-danger" type="submit">
           Submit
         </Button>
         <button className="btn btn-danger" type="submit">
@@ -80,6 +76,4 @@ const Login = ({ setUser, users }) => {
       </form>
     </OuterSectionStyle>
   );
-};
-
-export default Login;
+}
