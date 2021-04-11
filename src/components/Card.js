@@ -1,6 +1,7 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled from "styled-components";
 import OnlineStatus from "./OnlineStatus";
+import { Link, useLocation} from "react-router-dom";
 
 let socilaIcons = {
   github: <FaGithub size={30} />,
@@ -8,6 +9,17 @@ let socilaIcons = {
   instagram: <FaInstagram size={30} />,
   slack: <FaSlackHash size={30} />,
 };
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
 
 const LanguageName = styled.p`
   text-transform: capitalize;
@@ -33,6 +45,7 @@ const Column = styled.section`
 `;
 
 function Card({ userInfo }) {
+  const location = useLocation();
   const socialMedia = userInfo.socialMedia;
   const activeUser = userInfo.active;
   console.log(activeUser);
@@ -40,6 +53,11 @@ function Card({ userInfo }) {
   return (
     <CardView>
       <h1>{userInfo.username}</h1>
+      {location.pathname !== `/userInfo/${userInfo.id}` && (
+        <StyledLink to={`/userInfo/${userInfo.id}`}>
+          <h6 style={{ color: "gray" }}>view info</h6>
+        </StyledLink>
+      )}
       <OnlineStatus activeStatus={activeUser} />
       <Container>
         <Column>

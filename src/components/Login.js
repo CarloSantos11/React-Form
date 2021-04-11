@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import users from "../mock-db/users.json";
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react'
+import styled from "styled-components";
 
-const outerSectionStyle = {
-  textAlign: "center",
-  width: "50%",
-  padding: "20px 16px",
-  margin: "20px auto",
-};
+const OuterSectionStyle = styled.section`
+  text-align: center;
+  width: 50%;
+  padding: 20px 16px;
+  margin: 20px auto;
+`;
 
-const Login = ({ setUserState }) => {
+const Button = styled.button`
+  margin-right: 10px;
+`;
+
+const Login = ({ setUser, users }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
-  const [user, setUser] = useState(null);
 
-  function handleSubmit(event) {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     users.forEach((currentUser) => {
       if (
@@ -23,21 +26,19 @@ const Login = ({ setUserState }) => {
       ) {
         setUser(currentUser);
       }
-     
     });
-    setUserState(user);
   }
 
-  function handleNameChange(e) {
-    setUsernameField(e.target.value);
-  }
+  const handleNameChange = (event) => {
+    setUsernameField(event.target.value);
+  };
 
-  function handlePasswordChange(e) {
-    setPasswordField(e.target.value);
-  }
+  const handlePasswordChange = (event) => {
+    setPasswordField(event.target.value);
+  };
 
   return (
-    <div style={outerSectionStyle}>
+    <OuterSectionStyle>
       <h1>Login</h1>
       <br />
       <form name="form" id="login" onSubmit={handleSubmit}>
@@ -67,21 +68,15 @@ const Login = ({ setUserState }) => {
           <br />
         </div>
         <br />
-        <button
-          className="btn btn-danger"
-          type="submit"
-          style={{ marginRight: "10px" }}
-        >
-          Submit
-        </button>
-        <Link to="/signup">
-          <button className="btn btn-danger" type="submit">
-            Signup
-          </button>
-        </Link>
+      <Button className="btn btn-danger" type="submit">
+        Submit
+        </Button>
+      <button className="btn btn-danger" type="submit">
+        <a href="/signup">Signup</a>
+      </button>
       </form>
-    </div>
+    </OuterSectionStyle >
   );
-};
+}
 
 export default Login;
