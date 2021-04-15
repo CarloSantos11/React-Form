@@ -37,7 +37,6 @@ export default function App() {
           </ul>
         </nav>
       </div> */}
-
       <Switch>
         <Route path="/" exact>
           {user ? (
