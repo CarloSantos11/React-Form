@@ -1,5 +1,5 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -49,17 +49,20 @@ const CardView = styled.section`
 `;
 
 function Card({ userInfo }) {
-  const location = useLocation();
+  const { id } = useParams();
+  console.log(`Hello ${id}`)
 
   const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
       <h1>{userInfo.username}</h1>
-      {location.pathname !== `/userInfo/${userInfo.id}` && (
+    
+      { id && 
         <StyledLink to={`/userInfo/${userInfo.id}`}>
           <h6 style={{ color: "gray" }}>view info</h6>
         </StyledLink>
-      )}
+      }
+
       <Container>
         <Column>
           <h2>Role</h2>
@@ -101,16 +104,3 @@ function Card({ userInfo }) {
 }
 
 export default Card
-
-// React router
-// - Login
-// - Home - list of users
-// - User (uses the hiddenForm component) - dynamic router
-// Fake user login
-
-// Available people - import JSON
-// Page for displaying user
-
-// const ColumnTwo = styled.section`
-//   display: inline-block;
-// `
