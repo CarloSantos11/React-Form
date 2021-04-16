@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const UnorderedList = styled.ul`
@@ -7,10 +7,10 @@ const UnorderedList = styled.ul`
   padding: 0;
   overflow: hidden;
   background-color: #333;
-  position: -webkit-sticky; 
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-`
+`;
 
 const ListItems = styled.ul`
   float: left;
@@ -19,10 +19,11 @@ const ListItems = styled.ul`
   text-align: center;
   padding: 20px 16px;
   text-decoration: none;
-`
+`;
 
+const Nav = ({ setUser }) => {
+  const loggedOut = () => setUser(null);
 
-const Nav = () => {
   return (
     <nav>
       <UnorderedList>
@@ -33,11 +34,13 @@ const Nav = () => {
           <Link to="/signup">Signup</Link>
         </ListItems>
         <ListItems>
-          <Link to="/">logout</Link>
+          <Link to="/" onClick={loggedOut}>
+            logout
+          </Link>
         </ListItems>
       </UnorderedList>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

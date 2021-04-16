@@ -17,16 +17,15 @@ function App() {
   return (
     <Router>
       <Switch>
-
         <>
+          {user && <Nav setUser={setUser} />}
 
-          {user && <Nav />}                       
-        
           <Route path="/" exact>
-            {user ? (                             // If User is present
-              <Redirect to="/index" />            // Display index
-            ) : (                                 // Otherwise
-              <Login setUser={setUser} />         // Display Login
+            {user ? ( // If User is present
+              <Redirect to="/index" /> // Display index
+            ) : (
+              // Otherwise Display Login
+              <Login setUser={setUser} />
             )}
           </Route>
 
@@ -37,9 +36,7 @@ function App() {
           <Route path="/index">
             <IndexView />
           </Route>
-
         </>
-
       </Switch>
     </Router>
   );
