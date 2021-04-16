@@ -4,6 +4,7 @@ import Form from "./Form";
 import IndexView from "./IndexView";
 import Login from "./Login";
 import Nav from "./Nav";
+import users from "../mock-db/users.json";
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,16 +18,14 @@ function App() {
   return (
     <Router>
       <Switch>
-
         <>
+          {user && <Nav setUser={setUser} />}
 
-          {user && <Nav />}                       
-        
           <Route path="/" exact>
-            {user ? (                             // If User is present
-              <Redirect to="/index" />            // Display index
-            ) : (                                 // Otherwise
-              <Login setUser={setUser} />         // Display Login
+            {user ? (                                 // If User is present
+              <Redirect to="/index" />                // Display index
+            ) : (                                     // Otherwise Display Login
+              <Login setUser={setUser} users={users} />
             )}
           </Route>
 
@@ -35,11 +34,9 @@ function App() {
           </Route>
 
           <Route path="/index">
-            <IndexView />
+            <IndexView users={users} />
           </Route>
-
         </>
-
       </Switch>
     </Router>
   );

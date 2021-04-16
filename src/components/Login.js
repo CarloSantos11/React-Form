@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import users from "../mock-db/users.json";
 import styled from "styled-components";
 
 
@@ -13,8 +12,11 @@ const OuterSectionStyle = styled.section`
 const Button = styled.button`
   margin-right: 10px;
 `
+const Signup = styled.a`
+  color:inherit;
+`
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, users }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
@@ -76,7 +78,7 @@ const Login = ({ setUser }) => {
           Submit
         </Button>
         <button className="btn btn-danger" type="submit">
-          <a href="/signup">Signup</a>
+          <Signup href="/signup">Signup</Signup>
         </button>
       </form>
     </OuterSectionStyle>
