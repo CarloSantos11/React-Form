@@ -48,8 +48,9 @@ const CardView = styled.section`
   box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
 `;
 
-export default function Card({ userInfo }) {
+function Card({ userInfo }) {
   const location = useLocation();
+
   const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
@@ -98,6 +99,8 @@ export default function Card({ userInfo }) {
     </CardView>
   );
 }
+
+export default Card
 
 // React router
 // - Login

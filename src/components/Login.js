@@ -10,9 +10,12 @@ const OuterSectionStyle = styled.section`
 
 const Button = styled.button`
   margin-right: 10px;
-`;
+`
+const Signup = styled.a`
+  color:inherit;
+`
 
-export default function Login({ setUser, users }) {
+const Login = ({ setUser, users }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
@@ -71,9 +74,11 @@ export default function Login({ setUser, users }) {
           Submit
         </Button>
         <button className="btn btn-danger" type="submit">
-          <a href="/signup">Signup</a>
+          <Signup href="/signup">Signup</Signup>
         </button>
       </form>
     </OuterSectionStyle>
   );
 }
+
+export default Login;
