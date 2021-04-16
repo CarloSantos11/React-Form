@@ -34,11 +34,6 @@ const SocialMediaLink = styled.a`
   padding: 0.2rem;
 `;
 
-
-// const ColumnTwo = styled.section`
-//   display: inline-block;
-// `
-
 function Card({ userInfo }) {
   const socialMedia = userInfo.socialMedia;
   return (
