@@ -50,15 +50,13 @@ const CardView = styled.section`
 
 function Card({ userInfo }) {
   const { id } = useParams();
-  console.log(`Hello ${id}`)
-
   const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
       <h1>{userInfo.username}</h1>
     
       { id && 
-        <StyledLink to={`/userInfo/${userInfo.id}`}>
+        <StyledLink to={`/userInfo/${id}`}>
           <h6 style={{ color: "gray" }}>view info</h6>
         </StyledLink>
       }
