@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import users from "../mock-db/users.json";
 import styled from "styled-components";
 
 
@@ -17,7 +16,7 @@ const Signup = styled.a`
   color:inherit;
 `
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, users }) => {
   const [usernameField, setUsernameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
