@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,6 +13,7 @@ const UnorderedList = styled.ul`
   top: 0;
 `;
 
+
 const ListItems = styled.ul`
   float: left;
   display: block;
@@ -23,6 +25,7 @@ const ListItems = styled.ul`
 
 const Nav = ({ setUser }) => {
   const loggedOut = () => setUser(null);
+
 
   return (
     <nav>
