@@ -62,7 +62,7 @@ const Login = ({ setUser, users }) => {
           <br />
           <input
             onChange={handlePasswordChange}
-            type="text"
+            type="password"
             name="password"
             value={passwordField}
             placeholder="Password"

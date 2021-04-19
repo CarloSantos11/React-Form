@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Form from "./Form";
-import IndexView from "./IndexView";
 import Login from "./Login";
-import UserInfo from "./UserInfo";
-import Nav from "./Nav";
 import users from "../mock-db/users.json";
+import Protectedcomponent from "./ProtectedComponent"
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,29 +17,37 @@ export default function App() {
     <Router>
       <Switch>
         <>
-          {user && <Nav setUser={setUser} />}
+          {user &&
+            <Protectedcomponent
+              user={user}
+              users={users}
+              setUser={setUser}
+            /> 
+          }
 
           <Route path="/" exact>
-            {user ? (                                 // If User is present
-              <Redirect to="/index" />                // Display index
-            ) : (                                     // Otherwise Display Login
-              <Login setUser={setUser} users={users} />
-            )}
+            {user ?
+              <Redirect to="/index" /> :
+              <Redirect to="/login" />}
           </Route>
 
           <Route path="/signup">
             <Form />
           </Route>
 
-          <Route path="/index">
-            <IndexView users={users} />
-          </Route>
-
-          <Route path="/userInfo/:id">
-            <UserInfo users={users} />
+          <Route path="/login">
+            {user ?
+              <Redirect to="/index" /> :
+              <Login
+                setUser={setUser}
+                users={users}
+              />}
           </Route>
         </>
       </Switch>
     </Router>
   );
 }
+
+// Creating a protectedComponent:
+// nesting components
