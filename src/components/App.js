@@ -25,12 +25,6 @@ export default function App() {
             /> 
           }
 
-          <Route path="/" exact>
-            {user ?
-              <Redirect to="/index" /> :
-              <Redirect to="/login" />}
-          </Route>
-
           <Route path="/signup">
             <Form />
           </Route>
@@ -42,6 +36,12 @@ export default function App() {
                 setUser={setUser}
                 users={users}
               />}
+          </Route>
+
+          <Route path="/" >
+            {user ?
+              <Redirect to="/index" /> :
+              <Redirect to="/login" />}
           </Route>
         </>
       </Switch>
