@@ -1,6 +1,9 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
 import styled from "styled-components";
 
+import img from "../assets/images/indexHeaderImg.png";
+import profilePic from "../assets/images/profilePic.png";
+
 let socialIcons = {
   github: <FaGithub size={30} />,
   discord: <FaDiscord size={30} />,
@@ -13,14 +16,26 @@ const LanguageName = styled.p`
 `;
 
 const CardView = styled.section`
-  width: 500px;
+  background-image: url(${img});
+  background-size: 31.6em 10.7em;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  width: 31.5em;
+  height: 35.69em;
   margin: auto;
-  background-color: #fff;
   padding: 2rem 0rem 3rem 5rem;
   margin-bottom: 10rem;
   -webkit-box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
   box-shadow: 8px 7px 11px 6px rgba(163, 163, 163, 0.7);
 `;
+
+//I was not able to get the profile pic to render still working on it
+const ProfileImg = styled.div`
+  background-image: url(${profilePic});
+  background-size: 23.31em 23.31em;
+`;
+
 const Container = styled.section`
   display: flex;
 `;
@@ -38,6 +53,7 @@ function Card({ userInfo }) {
   const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
+      <ProfileImg />
       <h1>{userInfo.username}</h1>
       <Container>
         <Column>
@@ -59,7 +75,7 @@ function Card({ userInfo }) {
           <h3>Social Media</h3>
           <div id="post_social_links">
             {socialMedia.map(
-              (social, index) => 
+              (social, index) =>
                 social.value && (
                   <SocialMediaLink
                     key={index}
