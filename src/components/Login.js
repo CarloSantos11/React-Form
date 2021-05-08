@@ -23,10 +23,11 @@ const Login = ({ setUser, users }) => {
     event.preventDefault();
     users.forEach((currentUser) => {
       if (
-        currentUser?.username === usernameField &&
-        currentUser?.password === passwordField
+        currentUser.username === usernameField &&
+        currentUser.password === passwordField
       ) {
-        setUser(currentUser);
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser)); // JSON.parse(currentUser)
+        setUser(sessionStorage.getItem('currentUser', JSON.stringify(currentUser)));
       }
     });
   };

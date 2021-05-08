@@ -1,5 +1,5 @@
 import { FaGithub, FaDiscord, FaInstagram, FaSlackHash } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useParams, useRouteMatch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -49,14 +49,14 @@ const CardView = styled.section`
 `;
 
 function Card({ userInfo }) {
+  let { path, url } = useRouteMatch();
   const { id } = useParams();
   const socialMedia = userInfo.socialMedia;
   return (
     <CardView>
       <h1>{userInfo.username}</h1>
-    
-      { id && 
-        <StyledLink to={`/userInfo/${id}`}>
+      { !id && 
+        <StyledLink to={`${url}/${userInfo.id}`}>
           <h6 style={{ color: "gray" }}>view info</h6>
         </StyledLink>
       }

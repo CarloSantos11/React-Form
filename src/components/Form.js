@@ -130,6 +130,7 @@ export default function Form() {
   return (
     <>
       <OuterSection>
+        {/* <Car/> */}
         <section id="formSection">
           <form name="form" id="signupform" onSubmit={handleSubmit}>
             <div id="username">

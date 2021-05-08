@@ -1,8 +1,7 @@
-
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const UnorderedList = styled.ul`
+const NavList = styled.ul`
   list-style-type: none;
   margin: 0 0 50px 0;
   padding: 0;
@@ -13,8 +12,7 @@ const UnorderedList = styled.ul`
   top: 0;
 `;
 
-
-const ListItems = styled.ul`
+const NavItem = styled.ul`
   float: left;
   display: block;
   color: white;
@@ -23,25 +21,33 @@ const ListItems = styled.ul`
   text-decoration: none;
 `;
 
-const Nav = ({ setUser }) => {
-  const loggedOut = () => setUser(null);
+const Nav = ({ authenticated, setUser }) => {
+  // const loggedOut = () => setUser(null);
+
+  const loggedOut = () => {
+    sessionStorage.clear();
+    setUser(null);
+  }
 
 
   return (
     <nav>
-      <UnorderedList>
-        <ListItems>
-          <Link to="/index">Home</Link>
-        </ListItems>
-        <ListItems>
-          <Link to="/signup">Signup</Link>
-        </ListItems>
-        <ListItems>
+      <NavList>
+        <NavItem>
+          <Link to="/users">Home</Link>
+        </NavItem>
+        {
+          !authenticated && // Only if the user is not yet logged in should they see this
+          <NavItem>
+            <Link to="/signup">Signup</Link>
+          </NavItem>
+        }
+        <NavItem>
           <Link to="/" onClick={loggedOut}>
             logout
           </Link>
-        </ListItems>
-      </UnorderedList>
+        </NavItem>
+      </NavList>
     </nav>
   );
 };
